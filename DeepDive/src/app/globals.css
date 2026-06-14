@@ -1,0 +1,490 @@
+@import "tailwindcss";
+
+/* 다크모드: class 전략 (html.dark) — 이 디자인의 기본은 다크 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* =========================================================
+   DESIGN: Linear / Modern
+   딥 니어블랙(#050506) + 인디고 액센트(#5E6AD2)
+   레이어드 앰비언트 라이팅 · 글래스 · 멀티레이어 섀도우 · 정밀 마이크로인터랙션
+   ========================================================= */
+
+/* ---- 라이트 변형 (보조) ---- */
+:root {
+  --bg: #fbfbfd;
+  --bg-deep: #f2f3f7;
+  --bg-elevated: #ffffff;
+  --surface: rgba(255, 255, 255, 0.7);
+  --surface-2: rgba(20, 22, 50, 0.045);
+  --surface-glass: rgba(255, 255, 255, 0.75);
+  --border: rgba(20, 22, 50, 0.1);
+  --border-strong: rgba(20, 22, 50, 0.16);
+  --hair: rgba(20, 22, 50, 0.07);
+  --text: #16171c;
+  --text-muted: #5b6170;
+  --text-faint: rgba(20, 22, 50, 0.45);
+
+  --primary: #5e6ad2;
+  --primary-bright: #4f5ac2;
+  --primary-ink: #ffffff;
+  --accent: #5e6ad2;
+  --glow: rgba(94, 106, 210, 0.25);
+  --danger: #d92d4b;
+  --warning: #b5740c;
+  --success: #1f9d6b;
+
+  --shadow-sm: 0 0 0 1px rgba(20, 22, 50, 0.05), 0 2px 14px rgba(20, 22, 50, 0.07);
+  --shadow-md: 0 0 0 1px rgba(20, 22, 50, 0.08), 0 12px 40px rgba(20, 22, 50, 0.1),
+    0 0 60px rgba(94, 106, 210, 0.06);
+  --shadow-glow: 0 0 0 1px rgba(94, 106, 210, 0.4), 0 6px 20px rgba(94, 106, 210, 0.28),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.4);
+
+  /* 심해 그라데이션 앵커 (인디고 → 심연) */
+  --c-surface: #8ea0ff;
+  --c-shallow: #5e6ad2;
+  --c-mid: #2c3580;
+  --c-deep: #141735;
+  --c-abyss: #f2f3f7;
+
+  /* 과목 팔레트 — 디새추레이트 멀티휴 */
+  --subject-shallow: #5e6ad2;
+  --subject-mid: #7c86e6;
+  --subject-sun: #c98a2b;
+  --subject-coral: #d65b7e;
+  --subject-kelp: #1f9d6b;
+  --subject-surface: #2f9fb3;
+  --subject-deep: #8b6fd0;
+  --subject-glow: #5566e0;
+
+  --blob-1: rgba(94, 106, 210, 0.24);
+  --blob-2: rgba(168, 120, 220, 0.16);
+  --blob-3: rgba(80, 150, 220, 0.14);
+  --grid-line: rgba(20, 22, 50, 0.04);
+  --noise-opacity: 0.02;
+
+  color-scheme: light;
+}
+
+/* ---- 다크 (정본) ---- */
+.dark {
+  --bg: #050506;
+  --bg-deep: #020203;
+  --bg-elevated: #0a0a0c;
+  --surface: rgba(255, 255, 255, 0.05);
+  --surface-2: rgba(255, 255, 255, 0.08);
+  --surface-glass: rgba(10, 10, 12, 0.72);
+  --border: rgba(255, 255, 255, 0.08);
+  --border-strong: rgba(255, 255, 255, 0.14);
+  --hair: rgba(255, 255, 255, 0.06);
+  --text: #ededef;
+  --text-muted: #8a8f98;
+  --text-faint: rgba(255, 255, 255, 0.45);
+
+  --primary: #5e6ad2;
+  --primary-bright: #6872d9;
+  --primary-ink: #ffffff;
+  --accent: #5e6ad2;
+  --glow: rgba(94, 106, 210, 0.35);
+  --danger: #f2555a;
+  --warning: #f2b56b;
+  --success: #4cc38a;
+
+  --shadow-sm: 0 0 0 1px rgba(255, 255, 255, 0.06), 0 2px 20px rgba(0, 0, 0, 0.4),
+    0 0 40px rgba(0, 0, 0, 0.2);
+  --shadow-md: 0 0 0 1px rgba(255, 255, 255, 0.1), 0 8px 40px rgba(0, 0, 0, 0.5),
+    0 0 80px rgba(94, 106, 210, 0.1);
+  --shadow-glow: 0 0 0 1px rgba(94, 106, 210, 0.5), 0 4px 12px rgba(94, 106, 210, 0.3),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.2);
+
+  --c-surface: #7b8aff;
+  --c-shallow: #5e6ad2;
+  --c-mid: #2a3170;
+  --c-deep: #0c0e22;
+  --c-abyss: #020203;
+
+  --subject-shallow: #6872d9;
+  --subject-mid: #8b93e6;
+  --subject-sun: #e2a14b;
+  --subject-coral: #e0698a;
+  --subject-kelp: #4cc38a;
+  --subject-surface: #5cc8d8;
+  --subject-deep: #a98bda;
+  --subject-glow: #7b88f5;
+
+  --blob-1: rgba(94, 106, 210, 0.42);
+  --blob-2: rgba(150, 100, 210, 0.28);
+  --blob-3: rgba(70, 120, 210, 0.24);
+  --grid-line: rgba(255, 255, 255, 0.03);
+  --noise-opacity: 0.015;
+
+  color-scheme: dark;
+}
+
+/* =========================================================
+   Tailwind 매핑
+   ========================================================= */
+@theme inline {
+  --color-bg: var(--bg);
+  --color-bg-deep: var(--bg-deep);
+  --color-bg-elevated: var(--bg-elevated);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-border-strong: var(--border-strong);
+  --color-hair: var(--hair);
+  --color-fg: var(--text);
+  --color-muted: var(--text-muted);
+  --color-faint: var(--text-faint);
+  --color-primary: var(--primary);
+  --color-primary-bright: var(--primary-bright);
+  --color-accent: var(--accent);
+  --color-glow: var(--glow);
+  --color-danger: var(--danger);
+  --color-warning: var(--warning);
+  --color-success: var(--success);
+
+  --font-sans: var(--font-body-stack);
+  --font-mono: var(--font-mono-stack);
+  --font-display: var(--font-display-stack);
+
+  --radius-card: 16px;
+}
+
+:root {
+  --font-display-stack: "Inter", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", system-ui, sans-serif;
+  --font-body-stack: "Inter", Pretendard, -apple-system, BlinkMacSystemFont,
+    "Apple SD Gothic Neo", system-ui, sans-serif;
+  --font-mono-stack: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+/* =========================================================
+   베이스
+   ========================================================= */
+* {
+  border-color: var(--hair);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body-stack);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overflow-x: hidden;
+}
+
+.font-display {
+  font-family: var(--font-display-stack);
+  letter-spacing: -0.02em;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+}
+
+.label {
+  font-family: var(--font-mono-stack);
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+}
+
+/* 그라데이션 타이포 */
+.gradient-text {
+  background-image: linear-gradient(
+    to bottom,
+    var(--text) 0%,
+    color-mix(in srgb, var(--text) 78%, transparent) 100%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.gradient-text-accent {
+  background-image: linear-gradient(
+    100deg,
+    var(--accent),
+    color-mix(in srgb, var(--accent) 55%, #b6a8ff),
+    var(--accent)
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+/* =========================================================
+   앰비언트 배경 — 레이어드 라이팅 (블롭 + 그리드 + 노이즈)
+   ========================================================= */
+.app-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
+  pointer-events: none;
+  /* 레이어 1: 니어블랙 베이스 + 인디고 광원 풀(시그니처) */
+  background:
+    radial-gradient(60% 46% at 50% -6%, color-mix(in srgb, var(--accent) 32%, transparent), transparent 62%),
+    radial-gradient(46% 42% at 84% 6%, color-mix(in srgb, var(--subject-deep) 24%, transparent), transparent 60%),
+    radial-gradient(52% 46% at 10% 34%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 60%),
+    radial-gradient(60% 50% at 50% 108%, color-mix(in srgb, var(--accent) 16%, transparent), transparent 60%),
+    radial-gradient(ellipse at top, var(--bg-elevated) 0%, var(--bg) 55%, var(--bg-deep) 100%);
+}
+.app-grid {
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: radial-gradient(ellipse at 50% 0%, #000 30%, transparent 80%);
+}
+.app-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  opacity: var(--noise-opacity);
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+.blob {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(140px);
+  will-change: transform;
+}
+.blob-1 {
+  top: -20%;
+  left: 50%;
+  width: 900px;
+  height: 900px;
+  margin-left: -450px;
+  background: var(--blob-1);
+  animation: float 9s ease-in-out infinite;
+}
+.blob-2 {
+  top: 20%;
+  left: -10%;
+  width: 620px;
+  height: 760px;
+  background: var(--blob-2);
+  filter: blur(120px);
+  animation: float 11s ease-in-out infinite reverse;
+}
+.blob-3 {
+  top: 40%;
+  right: -8%;
+  width: 520px;
+  height: 680px;
+  background: var(--blob-3);
+  filter: blur(110px);
+  animation: float 10s ease-in-out infinite;
+}
+.blob-4 {
+  bottom: -12%;
+  left: 38%;
+  width: 720px;
+  height: 520px;
+  background: var(--blob-1);
+  filter: blur(130px);
+  animation: pulse-soft 7s ease-in-out infinite;
+}
+
+/* =========================================================
+   카드 / 버튼 / 슬라이더
+   ========================================================= */
+.card {
+  position: relative;
+  background: linear-gradient(
+    150deg,
+    color-mix(in srgb, var(--text) 7%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 5%, transparent) 100%
+  );
+  border: 1px solid var(--border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-sm);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+/* 카드 상단 1px 인디고 하이라이트 라인 */
+.card::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 1px;
+  border-radius: var(--radius-card) var(--radius-card) 0 0;
+  background: linear-gradient(
+    to right,
+    transparent,
+    color-mix(in srgb, var(--accent) 45%, transparent),
+    transparent
+  );
+  pointer-events: none;
+}
+.card-interactive {
+  transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.25s cubic-bezier(0.16, 1, 0.3, 1),
+    border-color 0.25s ease;
+}
+.card-interactive:hover {
+  transform: translateY(-4px);
+  border-color: var(--border-strong);
+  box-shadow: var(--shadow-md);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 8px;
+  font-weight: 500;
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1),
+    background-color 0.2s ease, box-shadow 0.2s ease, color 0.2s ease;
+}
+.btn:active {
+  transform: scale(0.98);
+}
+.btn-primary {
+  background: var(--primary);
+  color: var(--primary-ink);
+  box-shadow: var(--shadow-glow);
+}
+.btn-primary:hover {
+  background: var(--primary-bright);
+  box-shadow: 0 0 0 1px rgba(94, 106, 210, 0.6),
+    0 6px 22px rgba(94, 106, 210, 0.45), inset 0 1px 0 0 rgba(255, 255, 255, 0.25);
+}
+.btn-primary:disabled {
+  opacity: 0.45;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+.btn-secondary {
+  background: var(--surface);
+  color: var(--text);
+  box-shadow: inset 0 0 0 1px var(--border), inset 0 1px 0 0 rgba(255, 255, 255, 0.05);
+}
+.btn-secondary:hover {
+  background: var(--surface-2);
+  box-shadow: inset 0 0 0 1px var(--border-strong), 0 0 24px var(--glow);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--text-muted);
+}
+.btn-ghost:hover {
+  background: var(--surface);
+  color: var(--text);
+}
+
+/* 포커스 */
+:where(a, button, input, select, textarea, [tabindex]):focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--bg), 0 0 0 4px color-mix(in srgb, var(--accent) 60%, transparent);
+  border-radius: 8px;
+}
+
+/* 슬라이더 */
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  height: 4px;
+  border-radius: 9999px;
+  background: var(--surface-2);
+  cursor: pointer;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--primary);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 18%, transparent),
+    0 2px 8px rgba(0, 0, 0, 0.3);
+}
+input[type="range"]::-moz-range-thumb {
+  width: 18px;
+  height: 18px;
+  border: none;
+  border-radius: 50%;
+  background: var(--primary);
+}
+
+/* 스크롤바 */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background: var(--border-strong);
+  border-radius: 9999px;
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+/* =========================================================
+   애니메이션 — 정밀, expo-out, 작은 움직임
+   ========================================================= */
+@keyframes float {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-22px) rotate(1deg); }
+}
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+@keyframes rise {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.96); }
+  to { opacity: 1; transform: scale(1); }
+}
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes pulse-soft {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; }
+}
+
+.animate-rise { animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-fade-in { animation: fade-in 0.5s ease both; }
+.animate-pop { animation: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.animate-draw { animation: draw 1.1s cubic-bezier(0.16, 1, 0.3, 1) both; }
+
+.stagger > * { animation: rise 0.6s cubic-bezier(0.16, 1, 0.3, 1) both; }
+.stagger > *:nth-child(1) { animation-delay: 0.04s; }
+.stagger > *:nth-child(2) { animation-delay: 0.10s; }
+.stagger > *:nth-child(3) { animation-delay: 0.16s; }
+.stagger > *:nth-child(4) { animation-delay: 0.22s; }
+.stagger > *:nth-child(5) { animation-delay: 0.28s; }
+.stagger > *:nth-child(6) { animation-delay: 0.34s; }
+.stagger > *:nth-child(7) { animation-delay: 0.40s; }
+.stagger > *:nth-child(8) { animation-delay: 0.46s; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+  .blob { animation: none !important; }
+}
+.reduce-motion *, .reduce-motion *::before, .reduce-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+}
+.reduce-motion .blob { animation: none !important; }
